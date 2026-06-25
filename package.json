@@ -1,0 +1,13 @@
+{
+  "name": "life-care-system",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Life Care nursing home care system prototype with local JSON persistence.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
