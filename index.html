@@ -435,6 +435,136 @@
       font-weight: 900;
     }
 
+    .care-resident-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .care-resident-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.9);
+      padding: 14px;
+      min-height: 132px;
+      text-align: left;
+      color: var(--ink);
+      display: grid;
+      gap: 10px;
+      box-shadow: 0 12px 30px rgba(44, 74, 84, .08);
+    }
+
+    .care-resident-card:hover,
+    .care-resident-card.active {
+      border-color: var(--teal);
+      background: #f6fbf8;
+      transform: translateY(-1px);
+    }
+
+    .care-resident-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .resident-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #cfeee5, #fff2d8);
+      color: var(--teal-deep);
+      font-weight: 900;
+    }
+
+    .care-resident-name strong {
+      display: block;
+      font-size: 18px;
+      color: #1b3136;
+    }
+
+    .care-resident-name small,
+    .care-resident-meta {
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .care-action-panel {
+      margin-top: 14px;
+      border: 1px solid rgba(117,185,172,.45);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(255,255,255,.94), rgba(238,249,245,.9));
+      padding: 16px;
+      box-shadow: var(--soft-shadow);
+    }
+
+    .care-action-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .care-action-head h3 {
+      margin: 0 0 4px;
+      color: #1b3136;
+    }
+
+    .care-action-head p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .care-action-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .care-action-btn {
+      min-height: 104px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+      text-align: left;
+      color: var(--ink);
+      display: grid;
+      gap: 8px;
+      align-content: start;
+    }
+
+    .care-action-btn:hover {
+      border-color: var(--teal);
+      background: #f8fcfa;
+    }
+
+    .care-action-btn span {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--tone, #e8f5f1);
+      color: var(--teal-deep);
+      font-weight: 900;
+    }
+
+    .care-action-btn strong {
+      color: #1f373b;
+      font-size: 16px;
+    }
+
+    .care-action-btn small {
+      color: var(--muted);
+      line-height: 1.45;
+      font-weight: 800;
+    }
+
     .responsibility-row {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1017,7 +1147,7 @@
       .right-rail { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .module-body { grid-template-columns: 1fr; }
       .module-menu { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .portal-grid, .care-grid { grid-template-columns: 1fr; }
+      .portal-grid, .care-grid, .care-resident-grid, .care-action-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 740px) {
@@ -1026,7 +1156,7 @@
       .top-actions { justify-content: flex-start; }
       .hero-band { padding: 24px; }
       .hero-band h2 { font-size: 26px; }
-      .module-grid, .responsibility-row, .care-grid, .right-rail, .info-cards, .vitals-stats, .vitals-form, .physiology-options, .portal-grid { grid-template-columns: 1fr; }
+      .module-grid, .responsibility-row, .care-grid, .right-rail, .info-cards, .vitals-stats, .vitals-form, .physiology-options, .portal-grid, .care-resident-grid, .care-action-grid { grid-template-columns: 1fr; }
       .module-menu { grid-template-columns: 1fr; }
       .status-item { grid-template-columns: 1fr; }
       .resident-vital-row { grid-template-columns: 1fr; }
@@ -1123,13 +1253,13 @@
             </div>
           </div>
           <div class="portal-grid">
-            <button class="portal-card" type="button" data-open="生理" style="--portal:#1b8a7a">
+            <button class="portal-card" type="button" data-care-entry="true" style="--portal:#1b8a7a">
               <div>
                 <span class="portal-code">照</span>
                 <strong>照護工作台</strong>
-                <p>給護理師與照服員使用，集中處理生命徵象、照服任務、I/O、疼痛、交班與異常提醒。</p>
+                <p>先看目前入住住民，點選住民後再進入生命徵象、血糖、體重、疼痛等生理照護功能。</p>
               </div>
-              <span class="portal-foot"><span>保留生命徵象設定</span><span>進入</span></span>
+              <span class="portal-foot"><span>先選住民，再做照護</span><span>進入</span></span>
             </button>
             <button class="portal-card" type="button" data-open="家屬" style="--portal:#c8912f">
               <div>
@@ -1281,6 +1411,7 @@
     ];
     const vitalGridStoreKey = "careHomeVitalGridRecords";
     let activeVitalResident = "A-101";
+    let activeCareResident = "A-101";
 
     const modules = [
       ["警示", "#de735c"], ["照服", "#d79b32"], ["生理", "#8bae77"], ["I/O", "#8270b8"],
@@ -1543,6 +1674,83 @@
       return todayVitalEntries()
         .filter(item => item.bed === bed)
         .sort((a, b) => String(b.time).localeCompare(String(a.time)))[0] || null;
+    }
+
+    function residentInitial(name) {
+      return String(name || "").slice(0, 1) || "住";
+    }
+
+    function renderCareResidentActions(resident) {
+      const latest = latestVitalForBed(resident.bed);
+      return `
+        <section class="care-action-panel">
+          <div class="care-action-head">
+            <div>
+              <h3>${resident.name}｜${resident.bed}</h3>
+              <p>選擇要記錄或查看的生理照護項目。生命徵象會沿用原本的住民展開、輸入數值與異常值提醒設定。</p>
+            </div>
+            <span class="tag ${latest?.status === "異常" ? "danger" : "good"}">${latest?.status || "尚未量測"}</span>
+          </div>
+          <div class="care-action-grid">
+            <button class="care-action-btn" type="button" data-care-action="生命徵象" data-care-bed="${resident.bed}" style="--tone:#e8f5f1">
+              <span>V</span><strong>生命徵象</strong><small>體溫、心跳、呼吸、血壓、血氧。</small>
+            </button>
+            <button class="care-action-btn" type="button" data-care-action="血糖" data-care-bed="${resident.bed}" style="--tone:#fff1e8">
+              <span>G</span><strong>血糖</strong><small>飯前、飯後、睡前與低血糖追蹤。</small>
+            </button>
+            <button class="care-action-btn" type="button" data-care-action="體重" data-care-bed="${resident.bed}" style="--tone:#edf3fb">
+              <span>W</span><strong>體重</strong><small>週期量測與營養風險變化。</small>
+            </button>
+            <button class="care-action-btn" type="button" data-care-action="疼痛" data-care-bed="${resident.bed}" style="--tone:#f8edf4">
+              <span>P</span><strong>疼痛</strong><small>疼痛分數、部位、處置與複評。</small>
+            </button>
+          </div>
+        </section>
+      `;
+    }
+
+    function showCareResidents() {
+      activeModule = "照護";
+      renderModuleButtons();
+      homeDashboard.classList.add("hidden");
+      backendPanel.classList.add("hidden");
+      modulePage.classList.remove("hidden");
+      moduleTitle.textContent = "照護工作台";
+      moduleSummary.textContent = "先選擇現住住民，再進入該住民的生理照護功能。這裡會保留原本生命徵象的填寫、展開與異常值提醒。";
+      moduleMenu.innerHTML = `
+        <button type="button" data-care-entry="true">住民照護</button>
+        <button type="button" data-open="生理">生理總覽</button>
+        <button type="button" data-module="照服">照服任務</button>
+        <button type="button" data-module="I/O">I/O</button>
+      `;
+      const selectedResident = residentRoster.find(item => item.bed === activeCareResident) || residentRoster[0];
+      activeCareResident = selectedResident.bed;
+      moduleMain.innerHTML = `
+        <div class="sub-toolbar">
+          <div>
+            <h3>現住住民</h3>
+            <p>點選住民後，下方會出現可操作的生理照護功能。</p>
+          </div>
+          <span class="tag good">現住 ${residentRoster.length} 人</span>
+        </div>
+        <div class="care-resident-grid">
+          ${residentRoster.map(resident => {
+            const latest = latestVitalForBed(resident.bed);
+            return `
+              <button class="care-resident-card ${activeCareResident === resident.bed ? "active" : ""}" type="button" data-care-resident="${resident.bed}">
+                <span class="care-resident-top">
+                  <span class="resident-avatar">${residentInitial(resident.name)}</span>
+                  <span class="care-resident-name"><strong>${resident.name}</strong><small>${resident.bed}</small></span>
+                </span>
+                <span class="care-resident-meta">最近生命徵象：${latest ? `${latest.time}｜${latest.temp}°C｜${latest.spo2}%` : "今日尚未量測"}</span>
+                <span class="tag ${latest?.status === "異常" ? "danger" : latest?.status === "注意" ? "warn" : "good"}">${latest?.status || "待量測"}</span>
+              </button>
+            `;
+          }).join("")}
+        </div>
+        ${renderCareResidentActions(selectedResident)}
+      `;
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function showPhysiologyHome() {
@@ -1844,6 +2052,27 @@
     document.addEventListener("click", event => {
       const moduleBtn = event.target.closest("[data-module]");
       if (moduleBtn) openModule(moduleBtn.dataset.module);
+      const careEntryBtn = event.target.closest("[data-care-entry]");
+      if (careEntryBtn) {
+        showCareResidents();
+        showToast("已進入照護住民名單");
+      }
+      const careResidentBtn = event.target.closest("[data-care-resident]");
+      if (careResidentBtn) {
+        activeCareResident = careResidentBtn.dataset.careResident;
+        showCareResidents();
+        const resident = residentRoster.find(item => item.bed === activeCareResident);
+        showToast(`已選擇：${resident?.name || "住民"}`);
+      }
+      const careActionBtn = event.target.closest("[data-care-action]");
+      if (careActionBtn) {
+        activeCareResident = careActionBtn.dataset.careBed;
+        activeVitalResident = activeCareResident;
+        const action = careActionBtn.dataset.careAction;
+        if (action === "生命徵象") showVitalSignsGrid();
+        else showPhysiologyPlaceholder(action);
+        showToast(`已開啟：${action}`);
+      }
       const openBtn = event.target.closest("[data-open]");
       if (openBtn) openModule(openBtn.dataset.open);
       const physiologyBtn = event.target.closest("[data-physiology]");
