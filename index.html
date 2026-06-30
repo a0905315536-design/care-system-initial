@@ -437,20 +437,21 @@
 
     .care-resident-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
+      gap: 10px;
     }
 
     .care-resident-card {
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: rgba(255,255,255,.9);
-      padding: 14px;
-      min-height: 132px;
+      padding: 12px;
+      min-height: 76px;
       text-align: left;
       color: var(--ink);
-      display: grid;
-      gap: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
       box-shadow: 0 12px 30px rgba(44, 74, 84, .08);
     }
 
@@ -465,6 +466,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      min-width: 0;
     }
 
     .resident-avatar {
@@ -489,6 +491,219 @@
       color: var(--muted);
       font-weight: 800;
       font-size: 12px;
+    }
+
+    .care-resident-name {
+      min-width: 0;
+    }
+
+    .care-resident-card .tag {
+      flex: 0 0 auto;
+    }
+
+    .care-command-strip {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .care-command-card {
+      border: 1px solid rgba(217,228,223,.9);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(255,255,255,.94), rgba(246,251,248,.92));
+      padding: 16px;
+      box-shadow: var(--soft-shadow);
+    }
+
+    .care-command-card h3 {
+      margin: 0 0 6px;
+      color: #1b3136;
+    }
+
+    .care-command-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .care-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .care-kpi {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--tone, #fff);
+      padding: 12px;
+      min-height: 92px;
+    }
+
+    .care-kpi span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .care-kpi strong {
+      display: block;
+      color: #17282d;
+      font-size: 26px;
+      line-height: 1.1;
+    }
+
+    .care-filter-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 12px;
+    }
+
+    .care-filter-row button {
+      min-height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--muted);
+      padding: 0 12px;
+      font-weight: 900;
+    }
+
+    .care-filter-row button.active,
+    .care-filter-row button:hover {
+      border-color: var(--teal);
+      background: #eef8f4;
+      color: var(--teal-deep);
+    }
+
+    .care-workbench {
+      display: grid;
+      grid-template-columns: minmax(250px, .62fr) minmax(0, 1.38fr);
+      gap: 12px;
+      align-items: start;
+    }
+
+    .care-list-panel,
+    .care-detail-panel {
+      border: 1px solid rgba(217,228,223,.9);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.82);
+      padding: 14px;
+      box-shadow: var(--soft-shadow);
+    }
+
+    .care-panel-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .care-panel-title h3 {
+      margin: 0;
+      color: #1b3136;
+    }
+
+    .care-profile-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 12px 0;
+    }
+
+    .care-profile-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+    }
+
+    .care-profile-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .care-profile-item strong {
+      color: #1f373b;
+      font-size: 15px;
+    }
+
+    .care-note-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .care-note {
+      border-left: 4px solid var(--tone, var(--teal));
+      background: rgba(255,255,255,.86);
+      padding: 9px 10px;
+      color: var(--muted);
+      line-height: 1.5;
+      font-weight: 800;
+    }
+
+    .care-tab-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .care-tab-row button {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--muted);
+      font-weight: 900;
+    }
+
+    .care-tab-row button.active,
+    .care-tab-row button:hover {
+      border-color: var(--teal);
+      background: #eef8f4;
+      color: var(--teal-deep);
+    }
+
+    .care-task-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .care-task-item {
+      display: grid;
+      grid-template-columns: 76px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+    }
+
+    .care-task-item strong {
+      color: #1f373b;
+    }
+
+    .care-task-item span,
+    .care-task-item small {
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .care-mini-table {
+      margin-top: 12px;
     }
 
     .care-action-panel {
@@ -1147,7 +1362,7 @@
       .right-rail { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .module-body { grid-template-columns: 1fr; }
       .module-menu { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .portal-grid, .care-grid, .care-resident-grid, .care-action-grid { grid-template-columns: 1fr; }
+      .portal-grid, .care-grid, .care-resident-grid, .care-action-grid, .care-command-strip, .care-kpi-grid, .care-workbench, .care-profile-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 740px) {
@@ -1156,7 +1371,7 @@
       .top-actions { justify-content: flex-start; }
       .hero-band { padding: 24px; }
       .hero-band h2 { font-size: 26px; }
-      .module-grid, .responsibility-row, .care-grid, .right-rail, .info-cards, .vitals-stats, .vitals-form, .physiology-options, .portal-grid, .care-resident-grid, .care-action-grid { grid-template-columns: 1fr; }
+      .module-grid, .responsibility-row, .care-grid, .right-rail, .info-cards, .vitals-stats, .vitals-form, .physiology-options, .portal-grid, .care-resident-grid, .care-action-grid, .care-command-strip, .care-kpi-grid, .care-workbench, .care-profile-grid { grid-template-columns: 1fr; }
       .module-menu { grid-template-columns: 1fr; }
       .status-item { grid-template-columns: 1fr; }
       .resident-vital-row { grid-template-columns: 1fr; }
@@ -1402,16 +1617,51 @@
       { time: "10:20", resident: "周玉英", area: "C 區", temp: "36.5", bp: "118/76", pulse: "78", resp: "17", spo2: "98", sugar: "104", pain: "1", note: "穩定", status: "正常" }
     ];
     const residentRoster = [
-      { name: "王美惠", bed: "A-101" },
-      { name: "林建雄", bed: "A-102" },
-      { name: "陳秀蘭", bed: "B-203" },
-      { name: "周玉英", bed: "B-205" },
-      { name: "李春華", bed: "C-301" },
-      { name: "張德明", bed: "C-306" }
+      { name: "王美惠", bed: "A-101", area: "A 區", careLevel: "高照護", risk: "跌倒風險", diet: "軟質低鹽", nextCare: "09:30 複量血壓", family: "女兒 王小姐", focus: "夜間離床需加強巡視", alert: "attention" },
+      { name: "林建雄", bed: "A-102", area: "A 區", careLevel: "密切觀察", risk: "發燒追蹤", diet: "糖尿病餐", nextCare: "10:30 體溫複量", family: "兒子 林先生", focus: "今日體溫偏高，需完成交班", alert: "danger" },
+      { name: "陳秀蘭", bed: "B-203", area: "B 區", careLevel: "高照護", risk: "低血糖", diet: "少量多餐", nextCare: "11:00 飯前血糖", family: "女兒 陳小姐", focus: "飯前血糖偏低，備糖水與複測", alert: "danger" },
+      { name: "周玉英", bed: "B-205", area: "B 區", careLevel: "穩定照護", risk: "管灌照護", diet: "管灌 300ml", nextCare: "12:00 午餐管灌", family: "先生 周先生", focus: "灌食後需抬高床頭並記錄 I/O", alert: "stable" },
+      { name: "李春華", bed: "C-301", area: "C 區", careLevel: "復健照護", risk: "移位協助", diet: "普通餐", nextCare: "14:00 復健接送", family: "女兒 李小姐", focus: "移位需兩人協助，避免獨自下床", alert: "attention" },
+      { name: "張德明", bed: "C-306", area: "C 區", careLevel: "穩定照護", risk: "皮膚照護", diet: "軟質餐", nextCare: "15:00 翻身拍背", family: "兒子 張先生", focus: "臀部皮膚觀察，翻身需確實簽核", alert: "stable" }
     ];
     const vitalGridStoreKey = "careHomeVitalGridRecords";
     let activeVitalResident = "A-101";
     let activeCareResident = "A-101";
+    let activeCareFilter = "all";
+    let activeCareTab = "住民照護";
+
+    const residentCareTasks = {
+      "A-101": [
+        ["09:30", "血壓複量", "血壓偏高，完成複量後交班", "待處理"],
+        ["10:00", "離床巡視", "確認床邊安全與感應墊", "進行中"],
+        ["14:00", "家屬回覆", "回覆女兒今日狀態", "待處理"]
+      ],
+      "A-102": [
+        ["10:30", "體溫複量", "發燒追蹤，必要時通知護理師", "待處理"],
+        ["11:30", "水分補充", "少量多次補水並觀察精神", "進行中"],
+        ["15:00", "交班註記", "發燒狀態需交給小夜班", "待處理"]
+      ],
+      "B-203": [
+        ["11:00", "飯前血糖", "低血糖風險，備糖水", "待處理"],
+        ["12:20", "飯後觀察", "確認進食量與精神狀態", "待處理"],
+        ["16:00", "複測血糖", "完成低血糖處置後複測", "待處理"]
+      ],
+      "B-205": [
+        ["12:00", "午餐管灌", "抬高床頭並記錄 I/O", "待處理"],
+        ["13:00", "管路確認", "確認鼻胃管固定與皮膚狀態", "待處理"],
+        ["15:30", "翻身拍背", "灌食後留意嗆咳", "待處理"]
+      ],
+      "C-301": [
+        ["14:00", "復健接送", "移位需兩人協助", "待處理"],
+        ["15:00", "步態觀察", "回房後觀察疲憊與疼痛", "待處理"],
+        ["17:00", "晚餐協助", "避免自行下床", "待處理"]
+      ],
+      "C-306": [
+        ["15:00", "翻身拍背", "臀部皮膚觀察", "待處理"],
+        ["16:30", "皮膚紀錄", "若泛紅需通知護理師", "待處理"],
+        ["18:00", "晚餐協助", "軟質餐需確認吞嚥狀況", "待處理"]
+      ]
+    };
 
     const modules = [
       ["警示", "#de735c"], ["照服", "#d79b32"], ["生理", "#8bae77"], ["I/O", "#8270b8"],
@@ -1680,16 +1930,47 @@
       return String(name || "").slice(0, 1) || "住";
     }
 
-    function renderCareResidentActions(resident) {
-      const latest = latestVitalForBed(resident.bed);
+    function careStatusClass(resident, latest) {
+      if (latest?.status === "異常" || resident.alert === "danger") return "danger";
+      if (latest?.status === "注意" || resident.alert === "attention") return "warn";
+      return "good";
+    }
+
+    function careStatusText(resident, latest) {
+      if (latest?.status === "異常" || resident.alert === "danger") return "需處理";
+      if (latest?.status === "注意" || resident.alert === "attention") return "需留意";
+      return latest ? "穩定" : "待量測";
+    }
+
+    function filteredCareResidents() {
+      return residentRoster.filter(resident => {
+        const latest = latestVitalForBed(resident.bed);
+        if (activeCareFilter === "all") return true;
+        if (activeCareFilter === "focus") return careStatusClass(resident, latest) !== "good";
+        return resident.area === activeCareFilter;
+      });
+    }
+
+    function renderResidentCareTab(resident, latest, statusClass, statusText) {
       return `
+        <div class="care-profile-grid">
+          <div class="care-profile-item"><span>照護等級</span><strong>${resident.careLevel}</strong></div>
+          <div class="care-profile-item"><span>主要風險</span><strong>${resident.risk}</strong></div>
+          <div class="care-profile-item"><span>目前狀態</span><strong>${statusText}</strong></div>
+          <div class="care-profile-item"><span>下一個照護</span><strong>${resident.nextCare}</strong></div>
+          <div class="care-profile-item"><span>飲食型態</span><strong>${resident.diet}</strong></div>
+          <div class="care-profile-item"><span>家屬聯絡</span><strong>${resident.family}</strong></div>
+        </div>
+        <div class="care-note-list">
+          <div class="care-note" style="--tone:#1b8a7a;">照護重點：${resident.focus}</div>
+          <div class="care-note" style="--tone:#d79b32;">最近生命徵象：${latest ? `${latest.time}｜體溫 ${latest.temp}°C｜血氧 ${latest.spo2}%｜${latest.status}` : "今日尚未量測，建議先完成生命徵象。"}</div>
+        </div>
         <section class="care-action-panel">
           <div class="care-action-head">
             <div>
-              <h3>${resident.name}｜${resident.bed}</h3>
-              <p>選擇要記錄或查看的生理照護項目。生命徵象會沿用原本的住民展開、輸入數值與異常值提醒設定。</p>
+              <h3>常用紀錄</h3>
+              <p>這裡先保留原本可用的生理照護入口；點生命徵象會帶到該住民的紀錄位置。</p>
             </div>
-            <span class="tag ${latest?.status === "異常" ? "danger" : "good"}">${latest?.status || "尚未量測"}</span>
           </div>
           <div class="care-action-grid">
             <button class="care-action-btn" type="button" data-care-action="生命徵象" data-care-bed="${resident.bed}" style="--tone:#e8f5f1">
@@ -1709,6 +1990,86 @@
       `;
     }
 
+    function renderResidentPhysiologyTab(resident) {
+      const entries = todayVitalEntries()
+        .filter(item => item.bed === resident.bed)
+        .sort((a, b) => String(b.time).localeCompare(String(a.time)));
+      return `
+        <div class="care-profile-grid">
+          <div class="care-profile-item"><span>今日筆數</span><strong>${entries.length}</strong></div>
+          <div class="care-profile-item"><span>最近量測</span><strong>${entries[0]?.time || "尚未量測"}</strong></div>
+          <div class="care-profile-item"><span>目前狀態</span><strong>${entries[0]?.status || "待量測"}</strong></div>
+        </div>
+        <table class="care-mini-table">
+          <thead><tr><th>時間</th><th>體溫</th><th>心跳</th><th>呼吸</th><th>血壓</th><th>血氧</th><th>狀態</th></tr></thead>
+          <tbody>
+            ${entries.length ? entries.map(record => `
+              <tr>
+                <td>${record.time}</td>
+                <td>${isAbnormalVitalField("temp", record.temp) ? `<span class="tag danger">${record.temp}°C</span>` : `${record.temp}°C`}</td>
+                <td>${isAbnormalVitalField("pulse", record.pulse) ? `<span class="tag danger">${record.pulse}</span>` : record.pulse}</td>
+                <td>${isAbnormalVitalField("resp", record.resp) ? `<span class="tag danger">${record.resp}</span>` : record.resp}</td>
+                <td>${isAbnormalVitalField("bp", record.bp) ? `<span class="tag danger">${record.bp}</span>` : record.bp}</td>
+                <td>${isAbnormalVitalField("spo2", record.spo2) ? `<span class="tag danger">${record.spo2}%</span>` : `${record.spo2}%`}</td>
+                <td><span class="tag ${record.status === "異常" ? "danger" : "good"}">${record.status}</span></td>
+              </tr>
+            `).join("") : `<tr><td colspan="7">這位住民今日尚未有生命徵象紀錄。</td></tr>`}
+          </tbody>
+        </table>
+        <div class="btn-row" style="margin-top:12px;">
+          <button class="btn btn-primary" type="button" data-care-action="生命徵象" data-care-bed="${resident.bed}">前往生命徵象輸入</button>
+        </div>
+      `;
+    }
+
+    function renderResidentCareTasksTab(resident) {
+      const tasks = residentCareTasks[resident.bed] || [];
+      return `
+        <div class="care-profile-grid">
+          <div class="care-profile-item"><span>今日任務</span><strong>${tasks.length}</strong></div>
+          <div class="care-profile-item"><span>待處理</span><strong>${tasks.filter(task => task[3] === "待處理").length}</strong></div>
+          <div class="care-profile-item"><span>責任區</span><strong>${resident.area}</strong></div>
+        </div>
+        <div class="care-task-list">
+          ${tasks.map(task => `
+            <div class="care-task-item">
+              <span>${task[0]}</span>
+              <div><strong>${task[1]}</strong><small>${task[2]}</small></div>
+              <span class="tag ${task[3] === "待處理" ? "warn" : "good"}">${task[3]}</span>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function renderCareResidentActions(resident) {
+      const latest = latestVitalForBed(resident.bed);
+      const statusClass = careStatusClass(resident, latest);
+      const statusText = careStatusText(resident, latest);
+      const tabContent = activeCareTab === "生理總覽"
+        ? renderResidentPhysiologyTab(resident)
+        : activeCareTab === "照服任務"
+          ? renderResidentCareTasksTab(resident)
+          : renderResidentCareTab(resident, latest, statusClass, statusText);
+      return `
+        <section class="care-detail-panel">
+          <div class="care-action-head">
+            <div>
+              <h3>${resident.name}｜${resident.bed}</h3>
+              <p>${resident.area}｜${resident.careLevel}｜主要風險：${resident.risk}</p>
+            </div>
+            <span class="tag ${statusClass}">${statusText}</span>
+          </div>
+          <div class="care-tab-row">
+            ${["住民照護", "生理總覽", "照服任務"].map(tab => `
+              <button type="button" class="${activeCareTab === tab ? "active" : ""}" data-care-tab="${tab}" data-care-bed="${resident.bed}">${tab}</button>
+            `).join("")}
+          </div>
+          ${tabContent}
+        </section>
+      `;
+    }
+
     function showCareResidents() {
       activeModule = "照護";
       renderModuleButtons();
@@ -1716,39 +2077,72 @@
       backendPanel.classList.add("hidden");
       modulePage.classList.remove("hidden");
       moduleTitle.textContent = "照護工作台";
-      moduleSummary.textContent = "先選擇現住住民，再進入該住民的生理照護功能。這裡會保留原本生命徵象的填寫、展開與異常值提醒。";
+      moduleSummary.textContent = "左邊選擇住民，右邊只顯示該住民的住民照護、生理總覽與照服任務。";
       moduleMenu.innerHTML = `
-        <button type="button" data-care-entry="true">住民照護</button>
-        <button type="button" data-open="生理">生理總覽</button>
-        <button type="button" data-module="照服">照服任務</button>
-        <button type="button" data-module="I/O">I/O</button>
+        <button type="button" data-care-entry="true">照護工作台</button>
+        <button type="button" data-care-filter="all">全部住民</button>
+        <button type="button" data-care-filter="focus">需處理/留意</button>
       `;
-      const selectedResident = residentRoster.find(item => item.bed === activeCareResident) || residentRoster[0];
+      const visibleResidents = filteredCareResidents();
+      const selectedResident = visibleResidents.find(item => item.bed === activeCareResident) || visibleResidents[0] || residentRoster[0];
       activeCareResident = selectedResident.bed;
+      const careStats = residentRoster.reduce((stats, resident) => {
+        const latest = latestVitalForBed(resident.bed);
+        const status = careStatusClass(resident, latest);
+        stats[status] = (stats[status] || 0) + 1;
+        if (!latest) stats.toMeasure += 1;
+        return stats;
+      }, { danger: 0, warn: 0, good: 0, toMeasure: 0 });
       moduleMain.innerHTML = `
-        <div class="sub-toolbar">
-          <div>
-            <h3>現住住民</h3>
-            <p>點選住民後，下方會出現可操作的生理照護功能。</p>
+        <section class="care-command-strip">
+          <div class="care-command-card">
+            <h3>住民照護面板</h3>
+            <p>左側長條方格是現住住民，點選後右側會切換成該住民的專屬資料。</p>
           </div>
-          <span class="tag good">現住 ${residentRoster.length} 人</span>
+          <div class="care-command-card">
+            <h3>資料不混用</h3>
+            <p>右側的住民照護、生理總覽、照服任務，都只顯示目前選到的住民。</p>
+          </div>
+        </section>
+        <section class="care-kpi-grid">
+          <div class="care-kpi" style="--tone:#fff1ec"><span>需立即處理</span><strong>${careStats.danger}</strong></div>
+          <div class="care-kpi" style="--tone:#fff9ea"><span>需留意</span><strong>${careStats.warn}</strong></div>
+          <div class="care-kpi" style="--tone:#eef8f4"><span>穩定/已掌握</span><strong>${careStats.good}</strong></div>
+          <div class="care-kpi" style="--tone:#f2f6fb"><span>待量測</span><strong>${careStats.toMeasure}</strong></div>
+        </section>
+        <div class="care-filter-row">
+          ${[
+            ["all", "全部住民"],
+            ["focus", "需處理/留意"],
+            ["A 區", "A 區"],
+            ["B 區", "B 區"],
+            ["C 區", "C 區"]
+          ].map(([value, label]) => `<button type="button" class="${activeCareFilter === value ? "active" : ""}" data-care-filter="${value}">${label}</button>`).join("")}
         </div>
-        <div class="care-resident-grid">
-          ${residentRoster.map(resident => {
-            const latest = latestVitalForBed(resident.bed);
-            return `
-              <button class="care-resident-card ${activeCareResident === resident.bed ? "active" : ""}" type="button" data-care-resident="${resident.bed}">
-                <span class="care-resident-top">
-                  <span class="resident-avatar">${residentInitial(resident.name)}</span>
-                  <span class="care-resident-name"><strong>${resident.name}</strong><small>${resident.bed}</small></span>
-                </span>
-                <span class="care-resident-meta">最近生命徵象：${latest ? `${latest.time}｜${latest.temp}°C｜${latest.spo2}%` : "今日尚未量測"}</span>
-                <span class="tag ${latest?.status === "異常" ? "danger" : latest?.status === "注意" ? "warn" : "good"}">${latest?.status || "待量測"}</span>
-              </button>
-            `;
-          }).join("")}
-        </div>
-        ${renderCareResidentActions(selectedResident)}
+        <section class="care-workbench">
+          <div class="care-list-panel">
+            <div class="care-panel-title">
+              <h3>現住住民</h3>
+              <span class="tag good">${visibleResidents.length} / ${residentRoster.length}</span>
+            </div>
+            <div class="care-resident-grid">
+              ${visibleResidents.map(resident => {
+                const latest = latestVitalForBed(resident.bed);
+                const statusClass = careStatusClass(resident, latest);
+                return `
+                  <button class="care-resident-card ${activeCareResident === resident.bed ? "active" : ""}" type="button" data-care-resident="${resident.bed}">
+                    <span class="care-resident-top">
+                      <span class="resident-avatar">${residentInitial(resident.name)}</span>
+                      <span class="care-resident-name"><strong>${resident.name}</strong><small>${resident.bed}｜${resident.area}｜${resident.careLevel}</small></span>
+                    </span>
+                    <span class="tag ${statusClass}">${careStatusText(resident, latest)}</span>
+                  </button>
+                `;
+              }).join("") || `<div class="care-note">目前沒有符合篩選的住民。</div>`}
+            </div>
+          </div>
+          ${renderCareResidentActions(selectedResident)}
+        </section>
       `;
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -2063,6 +2457,19 @@
         showCareResidents();
         const resident = residentRoster.find(item => item.bed === activeCareResident);
         showToast(`已選擇：${resident?.name || "住民"}`);
+      }
+      const careTabBtn = event.target.closest("[data-care-tab]");
+      if (careTabBtn) {
+        activeCareTab = careTabBtn.dataset.careTab;
+        activeCareResident = careTabBtn.dataset.careBed || activeCareResident;
+        showCareResidents();
+        showToast(`已切換：${activeCareTab}`);
+      }
+      const careFilterBtn = event.target.closest("[data-care-filter]");
+      if (careFilterBtn) {
+        activeCareFilter = careFilterBtn.dataset.careFilter;
+        showCareResidents();
+        showToast(`已篩選：${careFilterBtn.textContent.trim()}`);
       }
       const careActionBtn = event.target.closest("[data-care-action]");
       if (careActionBtn) {
