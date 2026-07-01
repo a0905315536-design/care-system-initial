@@ -656,16 +656,18 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 8px;
-      margin: 12px 0;
+      margin: 0 0 14px;
     }
 
     .care-tab-row button {
-      min-height: 40px;
+      min-height: 62px;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: #fff;
-      color: var(--muted);
+      color: #24383d;
       font-weight: 900;
+      font-size: 20px;
+      text-align: center;
     }
 
     .care-tab-row button.active,
@@ -925,6 +927,14 @@
       display: grid;
       grid-template-columns: 230px minmax(0, 1fr);
       gap: 14px;
+    }
+
+    .module-body.care-mode {
+      grid-template-columns: 1fr;
+    }
+
+    .module-body.care-mode .module-menu {
+      display: none;
     }
 
     .module-menu {
@@ -1798,6 +1808,7 @@
       homeDashboard.classList.remove("hidden");
       modulePage.classList.add("hidden");
       backendPanel.classList.add("hidden");
+      document.querySelector(".module-body").classList.remove("care-mode");
       activeModule = "";
       renderModuleButtons();
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -2053,17 +2064,17 @@
           : renderResidentCareTab(resident, latest, statusClass, statusText);
       return `
         <section class="care-detail-panel">
+          <div class="care-tab-row">
+            ${["住民照護", "生理總覽", "照服任務"].map(tab => `
+              <button type="button" class="${activeCareTab === tab ? "active" : ""}" data-care-tab="${tab}" data-care-bed="${resident.bed}">${tab}</button>
+            `).join("")}
+          </div>
           <div class="care-action-head">
             <div>
               <h3>${resident.name}｜${resident.bed}</h3>
               <p>${resident.area}｜${resident.careLevel}｜主要風險：${resident.risk}</p>
             </div>
             <span class="tag ${statusClass}">${statusText}</span>
-          </div>
-          <div class="care-tab-row">
-            ${["住民照護", "生理總覽", "照服任務"].map(tab => `
-              <button type="button" class="${activeCareTab === tab ? "active" : ""}" data-care-tab="${tab}" data-care-bed="${resident.bed}">${tab}</button>
-            `).join("")}
           </div>
           ${tabContent}
         </section>
@@ -2076,49 +2087,14 @@
       homeDashboard.classList.add("hidden");
       backendPanel.classList.add("hidden");
       modulePage.classList.remove("hidden");
+      document.querySelector(".module-body").classList.add("care-mode");
       moduleTitle.textContent = "照護工作台";
       moduleSummary.textContent = "左邊選擇住民，右邊只顯示該住民的住民照護、生理總覽與照服任務。";
-      moduleMenu.innerHTML = `
-        <button type="button" data-care-entry="true">照護工作台</button>
-        <button type="button" data-care-filter="all">全部住民</button>
-        <button type="button" data-care-filter="focus">需處理/留意</button>
-      `;
+      moduleMenu.innerHTML = "";
       const visibleResidents = filteredCareResidents();
       const selectedResident = visibleResidents.find(item => item.bed === activeCareResident) || visibleResidents[0] || residentRoster[0];
       activeCareResident = selectedResident.bed;
-      const careStats = residentRoster.reduce((stats, resident) => {
-        const latest = latestVitalForBed(resident.bed);
-        const status = careStatusClass(resident, latest);
-        stats[status] = (stats[status] || 0) + 1;
-        if (!latest) stats.toMeasure += 1;
-        return stats;
-      }, { danger: 0, warn: 0, good: 0, toMeasure: 0 });
       moduleMain.innerHTML = `
-        <section class="care-command-strip">
-          <div class="care-command-card">
-            <h3>住民照護面板</h3>
-            <p>左側長條方格是現住住民，點選後右側會切換成該住民的專屬資料。</p>
-          </div>
-          <div class="care-command-card">
-            <h3>資料不混用</h3>
-            <p>右側的住民照護、生理總覽、照服任務，都只顯示目前選到的住民。</p>
-          </div>
-        </section>
-        <section class="care-kpi-grid">
-          <div class="care-kpi" style="--tone:#fff1ec"><span>需立即處理</span><strong>${careStats.danger}</strong></div>
-          <div class="care-kpi" style="--tone:#fff9ea"><span>需留意</span><strong>${careStats.warn}</strong></div>
-          <div class="care-kpi" style="--tone:#eef8f4"><span>穩定/已掌握</span><strong>${careStats.good}</strong></div>
-          <div class="care-kpi" style="--tone:#f2f6fb"><span>待量測</span><strong>${careStats.toMeasure}</strong></div>
-        </section>
-        <div class="care-filter-row">
-          ${[
-            ["all", "全部住民"],
-            ["focus", "需處理/留意"],
-            ["A 區", "A 區"],
-            ["B 區", "B 區"],
-            ["C 區", "C 區"]
-          ].map(([value, label]) => `<button type="button" class="${activeCareFilter === value ? "active" : ""}" data-care-filter="${value}">${label}</button>`).join("")}
-        </div>
         <section class="care-workbench">
           <div class="care-list-panel">
             <div class="care-panel-title">
@@ -2359,6 +2335,7 @@
       homeDashboard.classList.add("hidden");
       backendPanel.classList.add("hidden");
       modulePage.classList.remove("hidden");
+      document.querySelector(".module-body").classList.remove("care-mode");
       if (name === "生理") showPhysiologyHome();
       else genericModule(name);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -2426,6 +2403,7 @@
       homeDashboard.classList.add("hidden");
       modulePage.classList.add("hidden");
       backendPanel.classList.remove("hidden");
+      document.querySelector(".module-body").classList.remove("care-mode");
       renderBackend();
       showToast("已開啟後台打卡紀錄");
     }
